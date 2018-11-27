@@ -67,42 +67,35 @@ public class AuthActivity extends AppCompatActivity implements GoogleApiClient.O
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==RC_SIGN_IN){
+        if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            if(result.isSuccess()){
-                Toast.makeText(getApplicationContext(),"zxczxczxc",Toast.LENGTH_SHORT).show();
+            if (result.isSuccess()) {
                 GoogleSignInAccount account = result.getSignInAccount();
                 authWithGoogle(account);
             } else {
-                Toast.makeText(getApplicationContext(),"dhfghfghfhf",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Could not authenticate with Google account", Toast.LENGTH_SHORT).show();
             }
-        } else {
-            Toast.makeText(getApplicationContext(),"qwe",Toast.LENGTH_SHORT).show();
         }
     }
 
     private void authWithGoogle(GoogleSignInAccount account) {
-        Toast.makeText(getApplicationContext(),"Auth with Google",Toast.LENGTH_SHORT).show();
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                if (task.isSuccessful()) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"Auth Error",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Auth Error", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
 
-
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Toast.makeText(getApplicationContext(),"Connection Error",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Connection Error: Is internet connection active?", Toast.LENGTH_SHORT).show();
     }
 }
