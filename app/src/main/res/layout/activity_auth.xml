@@ -2,14 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="#FFF">
+    android:background="@color/colorPrimary"
+    android:padding="40dp">
 
-    <com.google.android.gms.common.SignInButton
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:layout_marginTop="30dp"
+        android:text="Welcome to\nWeekly Menu Builder!" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:layout_marginTop="30dp"
+        android:text="Plan your weekly menu day by day, create menu templates, generate shopping lists and more" />
+
+    <Button
         android:id="@+id/sign_in_button"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="15dp"
-        />
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Sign in with Google"
+        android:textSize="16sp"/>
 
 </LinearLayout>
