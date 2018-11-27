@@ -71,7 +71,11 @@ public class AuthActivity extends AppCompatActivity implements GoogleApiClient.O
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
                 GoogleSignInAccount account = result.getSignInAccount();
-                authWithGoogle(account);
+                if (account != null) {
+                    authWithGoogle(account);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Could not start authenticating with Google account", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 Toast.makeText(getApplicationContext(), "Could not authenticate with Google account", Toast.LENGTH_SHORT).show();
             }
