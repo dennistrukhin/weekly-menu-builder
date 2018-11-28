@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Menu Builder</string>
     <string name="title_sign_out">Sign out</string>
+    <string name="list_weeks_help">It looks like you\'ve just started to use this app. Create your first week by tapping on that red button down there.</string>
 </resources>
